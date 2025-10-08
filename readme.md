@@ -6,4 +6,7 @@ Voluntariado (voluntariado.html);
 Como doar (doacoes.html);
 Transparência (transparencia.html);
 Contato (contato.html);
-Blog/Notícias (blog.html).
+Blog/Notícias (blog.html)
+
+COMO COLOCAR API ?
+FUNCIONALIDADES DARK/LIGTH ?

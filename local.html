@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CEP - Brasil API</title>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Consulta de CEP</h1>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.6900883041585!2d-46.512649024896085!3d-23.399426178911483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8b51c3e66843%3A0xd54e5b2e0d0f4ea7!2sR.%20dos%20Guerreiros%20-%20Guarulhos%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1759879661589!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        <div class="input-group">
+            <label for="cep">Digite o CEP:</label>
+            <input type="text" id="cep" placeholder="00000-000" maxlength="9">
+        </div>
+        
+        <button onclick="consultarCEP()">Consultar</button>
+        
+        <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script>
+        // Função para formatar o CEP enquanto digita
+        document.getElementById('cep').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) {
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // Função para consultar o CEP
+        async function consultarCEP() {
+            const cepInput = document.getElementById('cep');
+            const resultado = document.getElementById('resultado');
+            const button = document.querySelector('button');
+            
+            // Limpar resultado anterior
+            resultado.style.display = 'none';
+            resultado.className = 'resultado';
+            
+            // Validar CEP
+            const cep = cepInput.value.replace(/\D/g, '');
+            
+            if (cep.length !== 8) {
+                mostrarErro('Por favor, digite um CEP válido com 8 dígitos.');
+                return;
+            }
+            
+            // Mostrar loading
+            button.disabled = true;
+            button.textContent = 'Consultando...';
+            resultado.style.display = 'block';
+            resultado.className = 'resultado loading';
+            resultado.innerHTML = '🔍 Buscando informações...';
+            
+            try {
+                // Consultar Brasil API
+                const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`);
+                
+                if (!response.ok) {
+                    throw new Error('CEP não encontrado');
+                }
+                
+                const dados = await response.json();
+                
+                // Mostrar resultado
+                mostrarSucesso(dados);
+                
+            } catch (error) {
+                mostrarErro('CEP não encontrado ou erro na consulta. Verifique se o CEP está correto.');
+            } finally {
+                // Restaurar botão
+                button.disabled = false;
+                button.textContent = 'Consultar';
+            }
+        }
+        
+        function mostrarSucesso(dados) {
+            const resultado = document.getElementById('resultado');
+            resultado.style.display = 'block';
+            resultado.className = 'resultado sucesso';
+            resultado.innerHTML = `
+                <div class="rua-info">📍 ${dados.street}</div>
+                <p><strong>Bairro:</strong> ${dados.district}</p>
+                <p><strong>Cidade:</strong> ${dados.city}</p>
+                <p><strong>Estado:</strong> ${dados.state}</p>
+                <p><strong>CEP:</strong> ${dados.cep}</p>
+            `;
+        }
+        
+        function mostrarErro(mensagem) {
+            const resultado = document.getElementById('resultado');
+            resultado.style.display = 'block';
+            resultado.className = 'resultado erro';
+            resultado.innerHTML = `❌ ${mensagem}`;
+        }
+        
+        // Permitir consulta ao pressionar Enter
+        document.getElementById('cep').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                consultarCEP();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,12 +1,5 @@
 telas :
-Página inicial (index.html);
-Sobre a organização (sobre.html);
-Projetos sociais (projetos.html);
-Voluntariado (voluntariado.html);
-Como doar (doacoes.html);
-Transparência (transparencia.html);
-Contato (contato.html);
-Blog/Notícias (blog.html)
 
-COMO COLOCAR API ?
-FUNCIONALIDADES DARK/LIGTH ?
+home (sobre a organização com info de contato)
+projeto (explicação do voluntariado e como doar)
+cadastros (voluntarios)

@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPA - Exemplo Simples</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Simples</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Instituto Vida Animal</h1>
-    <nav>
-      <button data-page="home">Home</button>
-      <button data-page="sobre">Sobre</button>
-      <button data-page="cadastro">Cadastro</button>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <a href="#" data-tela="tela1.html">Tela 1</a>
+            <a href="#" data-tela="tela2.html">Tela 2</a>
+            <a href="#" data-tela="tela3.html">Tela 3</a>
+        </nav>
+    </header>
 
-  <main id="conteudo">
-    <!-- O conteúdo dinâmico será carregado aqui -->
-  </main>
+    <main id="app">
+        <!-- O conteúdo das telas será carregado aqui -->
+    </main>
 
-  <footer>
-    <p>© 2025 ONG Patinhas do Bem — Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -78,5 +78,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Carrega a primeira tela por padrão ao iniciar a aplicação
-    carregarTela('./telas/tela1.html');
+    carregarTela('./telas/sobre.html');
 });

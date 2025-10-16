@@ -1,6 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     const app = document.getElementById('app');
     const navLinks = document.querySelectorAll('nav a');
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    // Criar overlay para o menu mobile
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    document.body.appendChild(overlay);
+
+    // Toggle do menu hamburguer
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        // Previne scroll quando menu aberto
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Fechar menu ao clicar no overlay
+    overlay.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
 
     // Função para carregar o conteúdo de um arquivo HTML
     async function carregarTela(caminho) {
@@ -11,6 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const html = await response.text();
             app.innerHTML = html;
+            
+            // Fechar menu após navegação (mobile)
+            if (navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Scroll suave para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } catch (error) {
             console.error('Falha ao carregar o conteúdo:', error);
             app.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
@@ -25,6 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (tela) {
             carregarTela(`./telas/${tela}`);
+            
+            // Adicionar classe active ao link atual
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
         }
     }
 

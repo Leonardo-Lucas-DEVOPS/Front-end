@@ -27,9 +27,10 @@ header {
 
 .logo {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #69b578;
+  height: 50px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
 }
 
 /* Menu Toggle (Hamburguer) */
@@ -170,7 +171,8 @@ header {
   }
 
   .logo {
-    font-size: 1.8rem;
+    height: 60px;
+    max-width: 220px;
   }
 }
 

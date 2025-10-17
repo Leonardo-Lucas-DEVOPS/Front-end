@@ -180,7 +180,7 @@ header {
   padding: 2rem;
   background-color: white;
   margin: 1rem auto;
-  max-width: 800px;
+  max-width: 1024px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -196,5 +196,74 @@ header {
 
   to {
     opacity: 1;
+  }
+}
+
+/* ------------------ Página de Projeto ------------------ */
+.projeto {
+  padding: 2rem 0;
+}
+
+.projeto h1 {
+  text-align: start;
+  color: #333;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.projeto-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.projeto-text {
+  padding-right: 1rem;
+}
+
+.projeto-text p {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.projeto-image {
+  width: 100%;
+}
+
+.projeto-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projeto-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivo - Mobile */
+@media (max-width: 768px) {
+  .projeto-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .projeto h1 {
+    font-size: 1.8rem;
+  }
+
+  .projeto-text {
+    padding-right: 0;
+  }
+
+  .projeto-text p {
+    text-align: left;
   }
 }

@@ -1,6 +1,9 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
-</style>
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+:root {
+  --primary-color: 0D323B;
+  --secondary-color: #fdbe00;
+}
 
 * {
   box-sizing: border-box;
@@ -9,10 +12,9 @@
 }
 
 body {
-  font-family: Padarok;
+  font-family: "Oswald", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
 }
 
 /* Header e Menu Hamburguer - Mobile First */
@@ -36,6 +38,28 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
+}
+
+header button {
+  background-color: var(--secondary-color);
+  font-weight: 800;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 60vh;
+}
+
+header .texto-banner {
+  margin-top: 2.5rem;
+}
+
+header .texto-banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header .texto-banner p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .logo {

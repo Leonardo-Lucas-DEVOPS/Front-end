@@ -19,7 +19,7 @@ body {
 
 /* Header e Menu Hamburguer - Mobile First */
 header {
-  background-image: url("./assets/images/bg.png");
+  background-image: url("../assets/images/bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   color: white;

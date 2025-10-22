@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para carregar o conteúdo de um arquivo HTML
     async function carregarTela(caminho) {
         try {
-            const response = await fetch(caminho);
+                const response = await fetch(`src/telas/${caminho}`);
             if (!response.ok) {
                 throw new Error(`Erro ao carregar a tela: ${response.statusText}`);
             }
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tela = link.dataset.tela;
         
         if (tela) {
-            carregarTela(`./telas/${tela}`);
+                carregarTela(`${tela}`);
             
             // Adicionar classe active ao link atual
             navLinks.forEach(l => l.classList.remove('active'));
@@ -78,5 +78,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Carrega a primeira tela por padrão ao iniciar a aplicação
-    carregarTela('./telas/sobre.html');
+        carregarTela('sobre.html');
 });

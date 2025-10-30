@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+:root {
+  --primary-color: #0d323b;
+  --secondary-color: #fdbe00;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  color: white;
+  text-align: justify;
+  font-size: 1rem;
+}
+
+#sobre {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+#sobre .imagem-sobre img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.texto-sobre h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.texto-sobre p {
+  margin: 1.5rem 0;
+}
+
+#acreditamos {
+  background-color: var(--secondary-color);
+  color: black;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 4rem 2rem;
+}
+
+#acreditamos .container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+#acreditamos .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  place-items: center;
+  margin-top: 4rem;
+}
+
+.texto-acreditamos h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.texto-acreditamos p {
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+  #sobre {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Inverte a ordem dos elementos */
+  .imagem-sobre {
+    order: 2;
+  }
+
+  .texto-sobre {
+    order: 1;
+  }
+
+  .texto-sobre h2 {
+    font-size: 2rem;
+  }
+
+  #acreditamos .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .texto-acreditamos {
+    order: 1;
+  }
+  .imagem-acreditamos {
+    order: 2;
+  }
+}

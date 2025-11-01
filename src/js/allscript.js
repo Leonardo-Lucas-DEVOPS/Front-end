@@ -60,11 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para lidar com a navegação
     function navegar(event) {
         event.preventDefault();
-        const link = event.target;
+        const link = event.target.closest('a'); // Garante que pega o link, mesmo se clicar no texto
+        
+        if (!link) return;
+        
         const tela = link.dataset.tela;
         
         if (tela) {
-                carregarTela(`${tela}`);
+            carregarTela(tela);
             
             // Adicionar classe active ao link atual
             navLinks.forEach(l => l.classList.remove('active'));
@@ -77,6 +80,23 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', navegar);
     });
 
+    // Botão de contato no banner
+    const botaoContato = document.getElementById('botao-header');
+    if (botaoContato) {
+        botaoContato.addEventListener('click', () => {
+            carregarTela('contato.html');
+            
+            // Fechar menu se estiver aberto (mobile)
+            if (navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+
     // Carrega a primeira tela por padrão ao iniciar a aplicação
-        carregarTela('sobre.html');
+    carregarTela('sobre.html');
 });

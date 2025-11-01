@@ -4,11 +4,11 @@
   
 }
 
-.projeto h1 {
-  text-align: start;
+.projeto h2 {
+  text-align: center;
   color: #ffffff;
   font-size: 2.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
 }
 
 .projeto-content {
@@ -19,7 +19,7 @@
   margin-top: 2rem;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(253, 190, 0, 0.7);
+   border: 2px solid #fdbe00;
 }
 
 .projeto-text {

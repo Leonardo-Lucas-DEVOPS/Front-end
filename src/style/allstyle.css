@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @import url("sobrestyle.css");
 @import url("projeto.css");
+@import url("contato.css");
+
 :root {
   --primary-color: #0d323b;
   --secondary-color: #fdbe00;
@@ -138,6 +140,7 @@ footer {
   padding-top: 80px;
   transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
 }
 
 .nav-menu.active {

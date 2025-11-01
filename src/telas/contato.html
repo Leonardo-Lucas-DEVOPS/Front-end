@@ -1,4 +1,218 @@
-<div class="contato">
-    <h1>Informações da Tela contato</h1>
-    <p>Esta é a terceira e última tela. Todos os links são manipulados pelo JavaScript.</p>
-</div>
+<section class="contato">
+    <h2>Entre em Contato</h2>
+    <p class="contato-intro">Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+
+    <form id="contatoForm" class="formulario-contato">
+        <!-- Informações Pessoais -->
+        <fieldset>
+            <legend>Informações Pessoais</legend>
+            
+            <div class="form-group">
+                <label for="nome">Nome Completo <span class="obrigatorio">*</span></label>
+                <input 
+                    type="text" 
+                    id="nome" 
+                    name="nome" 
+                    placeholder="Seu nome completo"
+                    required
+                    minlength="3"
+                    autocomplete="name"
+                >
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">E-mail <span class="obrigatorio">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="seu@email.com"
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone <span class="obrigatorio">*</span></label>
+                    <input 
+                        type="tel" 
+                        id="telefone" 
+                        name="telefone" 
+                        placeholder="(11) 99999-9999"
+                        required
+                        pattern="\(\d{2}\) \d{4,5}-\d{4}"
+                        autocomplete="tel"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dataNascimento">Data de Nascimento</label>
+                <input 
+                    type="date" 
+                    id="dataNascimento" 
+                    name="dataNascimento"
+                    max="2024-12-31"
+                    autocomplete="bday"
+                >
+            </div>
+        </fieldset>
+
+        <!-- Endereço -->
+        <fieldset>
+            <legend>Endereço</legend>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cep">CEP <span class="obrigatorio">*</span></label>
+                    <input 
+                        type="text" 
+                        id="cep" 
+                        name="cep" 
+                        placeholder="00000-000"
+                        required
+                        pattern="\d{5}-?\d{3}"
+                        maxlength="9"
+                        autocomplete="postal-code"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" autocomplete="address-level1">
+                        <option value="">Selecione</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="PR">Paraná</option>
+                        <!-- Adicione outros estados conforme necessário -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input 
+                    type="text" 
+                    id="cidade" 
+                    name="cidade" 
+                    placeholder="Sua cidade"
+                    autocomplete="address-level2"
+                >
+            </div>
+
+            <div class="form-row">
+                <div class="form-group flex-2">
+                    <label for="endereco">Endereço</label>
+                    <input 
+                        type="text" 
+                        id="endereco" 
+                        name="endereco" 
+                        placeholder="Rua, Avenida, etc."
+                        autocomplete="street-address"
+                    >
+                </div>
+
+                <div class="form-group flex-1">
+                    <label for="numero">Número</label>
+                    <input 
+                        type="text" 
+                        id="numero" 
+                        name="numero" 
+                        placeholder="123"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="complemento">Complemento</label>
+                <input 
+                    type="text" 
+                    id="complemento" 
+                    name="complemento" 
+                    placeholder="Apto, Bloco, etc."
+                >
+            </div>
+        </fieldset>
+
+        <!-- Motivo do Contato -->
+        <fieldset>
+            <legend>Motivo do Contato</legend>
+            
+            <div class="form-group">
+                <label for="assunto">Assunto <span class="obrigatorio">*</span></label>
+                <select id="assunto" name="assunto" required>
+                    <option value="">Selecione um assunto</option>
+                    <option value="adocao">Quero Adotar</option>
+                    <option value="denuncia">Denúncia de Maus-Tratos</option>
+                    <option value="doacao">Fazer uma Doação</option>
+                    <option value="voluntariado">Ser Voluntário</option>
+                    <option value="parceria">Proposta de Parceria</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Mensagem <span class="obrigatorio">*</span></label>
+                <textarea 
+                    id="mensagem" 
+                    name="mensagem" 
+                    rows="6"
+                    placeholder="Escreva sua mensagem aqui..."
+                    required
+                    minlength="10"
+                ></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Preferências -->
+        <fieldset>
+            <legend>Preferências</legend>
+            
+            <div class="form-group-checkbox">
+                <input 
+                    type="checkbox" 
+                    id="aceitaTermos" 
+                    name="aceitaTermos" 
+                    required
+                >
+                <label for="aceitaTermos">
+                    Aceito os <a href="#" target="_blank">termos de uso</a> e a <a href="#" target="_blank">política de privacidade</a> <span class="obrigatorio">*</span>
+                </label>
+            </div>
+
+            <div class="form-group-checkbox">
+                <input 
+                    type="checkbox" 
+                    id="receberNovidades" 
+                    name="receberNovidades"
+                >
+                <label for="receberNovidades">
+                    Desejo receber novidades e atualizações por e-mail
+                </label>
+            </div>
+
+            <div class="form-group-checkbox">
+                <input 
+                    type="checkbox" 
+                    id="receberSMS" 
+                    name="receberSMS"
+                >
+                <label for="receberSMS">
+                    Desejo receber notificações por SMS
+                </label>
+            </div>
+        </fieldset>
+
+        <!-- Botões -->
+        <div class="form-actions">
+            <button type="reset" class="btn-secondary">Limpar</button>
+            <button type="submit" class="btn-primary">Enviar Mensagem</button>
+        </div>
+
+        <!-- Mensagem de feedback -->
+        <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+    </form>
+</section>

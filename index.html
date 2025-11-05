@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instituto Vida Animal</title>        
-    <link rel="icon" href="assets/images/logo.png">
+    <title>Instituto Vida Animal</title>
     <link rel="stylesheet" href="src/style/allstyle.css">
+    <!-- Favicon moderno (SVG) - melhor qualidade -->
+    <link rel="icon" type="image/svg+xml" href="src/assets/icons/favicon/favicon.svg">
+    <!-- Fallback para navegadores que não suportam SVG -->
+    <link rel="icon" type="image/png" sizes="96x96" href="src/assets/icons/favicon/favicon-96x96.png">
+    <!-- Favicon tradicional (IE) -->
     <link rel="icon" type="image/x-icon" href="src/assets/icons/favicon/favicon.ico">
+    <!-- Apple Touch Icon (iPhone/iPad) -->
+    <link rel="apple-touch-icon" href="src/assets/icons/favicon/apple-touch-icon.png">
+    <!-- Web App Manifest (PWA) -->
+    <link rel="manifest" href="src/assets/icons/favicon/site.webmanifest">
 </head>
+
 <body>
     <header>
         <div class="bloco-header">
@@ -21,7 +31,6 @@
                 <nav class="nav-menu" id="navMenu">
                     <a data-tela="sobre.html">Menu</a>
                     <a data-tela="projeto.html">Projetos</a>
-                    <a data-tela="voluntariado.html">Voluntariado</a>
                     <a data-tela="contato.html">Contate-nos</a>
                 </nav>
             </div>
@@ -32,7 +41,7 @@
                 <button id="botao-header">Contato</button>
             </div>
         </div>
-        
+
 
     </header>
 
@@ -43,8 +52,11 @@
     <footer>
         <p>© 2025 Instituto Vida Animal. Todos os direitos reservados.</p>
     </footer>
-
+    
+    <!-- Scripts -->
     <script src="src/js/allscript.js"></script>
+    <script src="src/js/contato.js"></script>
 
 </body>
+
 </html>

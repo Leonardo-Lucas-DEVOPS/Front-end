@@ -19,7 +19,7 @@
   margin-top: 2rem;
   padding: 2rem;
   border-radius: 12px;
-   border: 2px solid #fdbe00;
+  border: 2px solid #fdbe00;
 }
 
 .projeto-text {
@@ -60,6 +60,10 @@
   .projeto-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
   }
 
   .projeto h1 {

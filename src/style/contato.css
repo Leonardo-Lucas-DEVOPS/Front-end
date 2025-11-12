@@ -3,7 +3,6 @@
 /* ========================================== */
 
 .contato {
-    max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -273,7 +272,10 @@ textarea:valid:not(:placeholder-shown) {
 
 @media (max-width: 768px) {
     .contato {
-        padding: 1rem;
+        padding: 0.1rem;
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .contato h2 {

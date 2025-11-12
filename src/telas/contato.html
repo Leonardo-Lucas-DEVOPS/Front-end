@@ -2,6 +2,9 @@
     <h2>Entre em Contato</h2>
     <p class="contato-intro">Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
 
+    <!-- Mensagem de feedback -->
+    <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+    
     <form id="contatoForm" class="formulario-contato">
         <!-- Informações Pessoais -->
         <fieldset>
@@ -29,7 +32,7 @@
 
             <div class="form-group">
                 <label for="dataNascimento">Data de Nascimento</label>
-                <input type="date" id="dataNascimento" name="dataNascimento" max="2024-12-31" autocomplete="bday">
+                <input type="date" id="dataNascimento" name="dataNascimento" max="2025-12-31" autocomplete="bday">
             </div>
         </fieldset>
 
@@ -160,8 +163,5 @@
             <button type="reset" class="btn-secondary">Limpar</button>
             <button type="submit" class="btn-primary">Enviar Mensagem</button>
         </div>
-
-        <!-- Mensagem de feedback -->
-        <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
     </form>
 </section>

@@ -2,8 +2,7 @@
 // INSTITUTO VIDA ANIMAL - MÁSCARAS DE FORMULÁRIO
 // ============================================
 // Funções de formatação e máscaras de input
-// Versão: 1.0
-// Data: 07/11/2025
+
 
 /**
  * Objeto contendo todas as máscaras de formulário

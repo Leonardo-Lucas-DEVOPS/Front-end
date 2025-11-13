@@ -1,3 +1,8 @@
+// ============================================
+// INSTITUTO VIDA ANIMAL - MÁSCARAS DE FORMULÁRIO
+// ============================================
+// funções de navegação e carregamento dinâmico de telas web e mobile
+
 document.addEventListener('DOMContentLoaded', () => {
     const app = document.getElementById('app');
     const navLinks = document.querySelectorAll('nav a');

@@ -3,22 +3,23 @@
 /* ========================================== */
 
 .contato {
+    max-width: var(--max-width-lg); /* Mesma largura dos cards de projeto */
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--spacing-lg) 0;
 }
 
 .contato h2 {
-    color: #ffffff;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-2xl); /* Mesmo tamanho do h2 de projeto */
+    margin-bottom: calc(var(--spacing-2xl) * 1.5); /* Mesmo espaçamento */
     text-align: center;
 }
 
 .contato-intro {
-    color: #cac3c3;
+    color: var(--color-text-muted);
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-md);
 }
 
 /* ========================================== */
@@ -27,25 +28,25 @@
 
 .formulario-contato {
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 2px solid #fdbe00;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border);
 }
 
 /* Fieldsets */
 fieldset {
     border: none;
     padding: 0;
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-lg);
 }
 
 legend {
-    color: #fdbe00;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #fdbe00;
+    color: var(--color-secondary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-border);
     width: 100%;
 }
 
@@ -54,13 +55,13 @@ legend {
 /* ========================================== */
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-md);
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: var(--spacing-sm);
 }
 
 .form-row .flex-2 {
@@ -74,15 +75,15 @@ legend {
 /* Labels */
 label {
     display: block;
-    color: #ffffff;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-base);
 }
 
 .obrigatorio {
-    color: #ff6b6b;
-    font-weight: bold;
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
 }
 
 /* Inputs, Select e Textarea */
@@ -93,14 +94,14 @@ input[type="date"],
 select,
 textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem var(--spacing-sm);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    font-size: 1rem;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
     font-family: inherit;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
 }
 
 input::placeholder,
@@ -112,7 +113,7 @@ input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #fdbe00;
+    border-color: var(--color-secondary);
     background-color: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 0 3px rgba(253, 190, 0, 0.1);
 }
@@ -123,13 +124,13 @@ select {
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 1rem center;
+    background-position: right var(--spacing-sm) center;
     padding-right: 2.5rem;
 }
 
 select option {
-    background-color: #0d323b;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
 }
 
 /* Textarea */
@@ -145,7 +146,7 @@ textarea {
 .form-group-checkbox {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-sm);
     gap: 0.75rem;
 }
 
@@ -154,19 +155,19 @@ textarea {
     height: 20px;
     margin-top: 2px;
     cursor: pointer;
-    accent-color: #fdbe00;
+    accent-color: var(--color-secondary);
 }
 
 .form-group-checkbox label {
     margin: 0;
-    color: #cac3c3;
-    font-weight: 400;
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-normal);
     cursor: pointer;
     flex: 1;
 }
 
 .form-group-checkbox a {
-    color: #fdbe00;
+    color: var(--color-secondary);
     text-decoration: underline;
 }
 
@@ -180,33 +181,33 @@ textarea {
 
 .form-actions {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-sm);
     justify-content: flex-end;
-    margin-top: 2rem;
+    margin-top: var(--spacing-lg);
 }
 
 .btn-primary,
 .btn-secondary {
-    padding: 0.875rem 2rem;
+    padding: 0.875rem var(--spacing-lg);
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .btn-primary {
-    background-color: #fdbe00;
-    color: #0d323b;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .btn-primary:hover:not(:disabled) {
     background-color: #ffd93d;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(253, 190, 0, 0.4);
+    box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:disabled {
@@ -216,13 +217,13 @@ textarea {
 
 .btn-secondary {
     background-color: transparent;
-    color: #ffffff;
+    color: var(--color-text-primary);
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    border-color: #ffffff;
+    border-color: var(--color-text-primary);
 }
 
 /* ========================================== */
@@ -231,22 +232,23 @@ textarea {
 
 .form-feedback {
     display: none;
-    margin-top: 1.5rem;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
+    margin-top: var(--spacing-md);    
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-medium);
     text-align: center;
 }
 
 .form-feedback.sucesso {
     background-color: rgba(76, 175, 80, 0.2);
-    border: 2px solid #4caf50;
+    border: 2px solid var(--color-success);
     color: #81c784;
 }
 
 .form-feedback.erro {
     background-color: rgba(244, 67, 54, 0.2);
-    border: 2px solid #f44336;
+    border: 2px solid var(--color-error);
     color: #ef5350;
 }
 
@@ -257,13 +259,13 @@ textarea {
 input:invalid:not(:placeholder-shown),
 select:invalid:not(:placeholder-shown),
 textarea:invalid:not(:placeholder-shown) {
-    border-color: #ff6b6b;
+    border-color: var(--color-error);
 }
 
 input:valid:not(:placeholder-shown),
 select:valid:not(:placeholder-shown),
 textarea:valid:not(:placeholder-shown) {
-    border-color: #4caf50;
+    border-color: var(--color-success);
 }
 
 /* ========================================== */
@@ -272,18 +274,18 @@ textarea:valid:not(:placeholder-shown) {
 
 @media (max-width: 768px) {
     .contato {
-        padding: 0.1rem;
+        padding: var(--spacing-lg) 0;
         max-width: 95%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .contato h2 {
-        font-size: 2rem;
+        font-size: var(--font-size-xl);
     }
 
     .formulario-contato {
-        padding: 1.5rem;
+        padding: var(--spacing-md);
     }
 
     .form-row {

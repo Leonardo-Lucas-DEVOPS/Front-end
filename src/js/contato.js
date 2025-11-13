@@ -2,9 +2,8 @@
 // INSTITUTO VIDA ANIMAL - FORMULÁRIO DE CONTATO
 // ============================================
 // Conexão com Google Sheets via Apps Script
-// Versão: 1.0
-// Data: 04/11/2025
-// NOTA: Máscaras de formulário movidas para mask.js
+// Busca de CEP e Validação Via API
+// Sistema de status e feedback ao usuário
 
 // ============================================
 // CONFIGURAÇÃO GOOGLE SHEETS

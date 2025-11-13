@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 
-:root {
-  --primary-color: #0d323b;
-  --secondary-color: #fdbe00;
-}
+/* Variáveis removidas - agora estão em allstyle.css */
 
 * {
   box-sizing: border-box;
@@ -12,72 +9,114 @@
 }
 
 main {
-  color: white;
+  color: var(--color-text-primary);
   text-align: justify;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
+  max-width: var(--max-width-2xl);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
 }
 
 #sobre {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  gap: var(--gap-lg);
+  padding: var(--spacing-2xl) 0;
+}
+
+#sobre .imagem-sobre {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 #sobre .imagem-sobre img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
-  margin: 0 auto;
+  border-radius: var(--radius-md);
+}
+
+.texto-sobre {
+  padding: var(--spacing-sm);
 }
 
 .texto-sobre h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-secondary);
 }
 
 .texto-sobre p {
-  margin: 1.5rem 0;
+  margin: var(--spacing-md) 0;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
 }
 
 #acreditamos {
-  background-color: var(--secondary-color);
-  color: black;
+  background-color: var(--color-secondary);
+  color: var(--color-text-dark);
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  padding: 4rem 2rem;
+  padding: var(--spacing-2xl) var(--container-padding);
+  margin-top: var(--spacing-2xl);
 }
 
 #acreditamos .container {
-  max-width: 1024px;
+  max-width: var(--max-width-2xl);
   margin: 0 auto;
-}
-
-#acreditamos .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  place-items: center;
-  margin-top: 4rem;
+  gap: var(--gap-lg);
+  padding: var(--spacing-lg);
+}
+
+.texto-acreditamos {
+  padding: var(--spacing-sm);
 }
 
 .texto-acreditamos h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-primary);
 }
 
 .texto-acreditamos p {
-  margin: 1.5rem 0;
+  margin: var(--spacing-md) 0;
+  line-height: var(--line-height-relaxed);
+  color: #2d2d2d;
+}
+
+.imagem-acreditamos {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.imagem-acreditamos img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
 }
 
 @media (max-width: 768px) {
+  main {
+    padding: 0 var(--container-padding-mobile);
+  }
+
   #sobre {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--gap-md);
+    padding: var(--spacing-lg) 0;
   }
 
   /* Inverte a ordem dos elementos */
@@ -87,20 +126,40 @@ main {
 
   .texto-sobre {
     order: 1;
+    padding: 0;
   }
 
   .texto-sobre h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-2xl);
+  }
+
+  .texto-sobre p {
+    font-size: var(--font-size-sm);
+  }
+
+  #acreditamos {
+    padding: var(--spacing-xl) var(--container-padding-mobile);
   }
 
   #acreditamos .container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--gap-md);
+    padding: var(--spacing-sm);
   }
 
   .texto-acreditamos {
     order: 1;
+    padding: 0;
   }
+
+  .texto-acreditamos h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .texto-acreditamos p {
+    font-size: var(--font-size-sm);
+  }
+
   .imagem-acreditamos {
     order: 2;
   }

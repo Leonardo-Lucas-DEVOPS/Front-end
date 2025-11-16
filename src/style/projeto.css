@@ -1,4 +1,10 @@
 /* ------------------ Página de Projeto ------------------ */
+* {
+  box-sizing: border-box;
+}
+
+/* ============ PROJETO ============ */
+
 .projeto {
   padding: var(--spacing-lg) 0;
 }
@@ -7,31 +13,40 @@
   text-align: center;
   color: var(--color-text-primary);
   font-size: var(--font-size-2xl);
-  margin-bottom: calc(var(--spacing-2xl) * 1.5);
+  margin-bottom: calc(var(--spacing-xl) * 1.5);
+}
+
+.grid-projetos {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: var(--gap-sm);
+  margin-top: 0 auto;
+  padding: 0 var(--spacing-sm);
 }
 
 .projeto-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap-md);
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  align-items: stretch;
   margin-top: var(--spacing-lg);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   border: 2px solid var(--color-border);
+  background: transparent;
 }
 
-.projeto-text {
-  padding-right: var(--spacing-sm);
+.projeto-text { 
+  padding-right: 0; 
 }
 
-.projeto-text h4 {
+.projeto-texto h4 {
   color: var(--color-text-primary);
   font-size: var(--font-size-xl);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
-.projeto-text p {
+.projeto-texto p {
   line-height: var(--line-height-normal);
   color: var(--color-text-muted);
   margin-bottom: var(--spacing-sm);
@@ -40,19 +55,114 @@
 
 .projeto-image {
   width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
 }
 
 .projeto-image img {
   width: 100%;
   height: auto;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 80%, 18% 80%, 0% 38%);
   object-fit: cover;
+  display: block;
   transition: transform var(--transition-base);
+  max-height: 320px;
 }
 
 .projeto-image img:hover {
   transform: scale(1.02);
 }
+
+/* ============ DOACÕES ============ */
+
+.doacoes {
+  background-color: var(--color-secondary);
+  color: var(--color-text-tertiary);
+  width: 100vw;
+  position: relative;
+  left: 50%;               
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: var(--spacing-lg) var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  box-sizing: border-box;
+}
+
+.doacoes h2 {
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.doacoes p {
+  text-align: justify;
+  font-size: var(--font-size-lg);
+}
+
+.doacoes .doacoes-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: var(--gap-md);
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+  align-items: center;
+  padding: 0;
+}
+
+.valor-cinco,
+.valor-dez,
+.valor-trinta,
+.valor-quarenta-cinco {
+  background-color: var(--color-neutral);
+  color: var(--color-primary);
+  padding: var(--spacing-md) var(--spacing-sm) var(--spacing-xl); 
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: visible; 
+  box-shadow: 0 6px 18px var(--shadow-sm);
+}
+
+.valor-cinco button,
+.valor-dez button,
+.valor-trinta button,
+.valor-quarenta-cinco button {
+  font-size: var(--font-size-base);
+  position: absolute;
+  left: 50%;
+  bottom: -1rem; 
+  transform: translateX(-50%);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 999px;
+  z-index: 60; 
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+  border: none;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color .18s ease, transform .12s ease, box-shadow .18s ease;
+}
+
+.valor-cinco button:hover,
+.valor-dez button:hover,
+.valor-trinta button:hover,
+.valor-quarenta-cinco button:hover {
+  background-color: var(--color-quaternary);
+  color: var(--color-text-dark);
+}
+
+/* ============ UTILIDADES ============ */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 
 /* Responsivo - Mobile */
 @media (max-width: 768px) {

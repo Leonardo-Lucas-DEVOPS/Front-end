@@ -9,13 +9,15 @@
 }
 
 main {
-  color: var(--color-text-primary);
+  color: var(--color-text-primary); 
   text-align: justify;
   font-size: var(--font-size-base);
   max-width: var(--max-width-2xl);
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
+
+/* ========= SEÇÃO SOBRE ========== */
 
 #sobre {
   display: grid;
@@ -55,6 +57,9 @@ main {
   color: var(--color-text-secondary);
 }
 
+
+/* ======= SEÇÃO ACREDITAMOS ======= */
+
 #acreditamos {
   background-color: var(--color-secondary);
   color: var(--color-text-dark);
@@ -76,6 +81,7 @@ main {
   align-items: center;
   gap: var(--gap-lg);
   padding: var(--spacing-lg);
+  max-width: var(--max-width-lg);
 }
 
 .texto-acreditamos {
@@ -107,6 +113,110 @@ main {
   display: block;
   border-radius: var(--radius-md);
 }
+
+/* ======== SEÇÃO ATIVIDADES ======== */
+
+#atividades {
+  max-width: var(--max-width-lg);
+  margin: var(--spacing-2xl) auto;
+  padding: 0 var(--spacing-lg);
+  text-align: center;
+}
+
+#atividades h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.proporcionamos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-2xl);
+  text-align: center;
+}
+
+.proporcionamos img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.resgate,
+.tratamento,
+.reabilitacao,
+.adocao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ======== SEÇÃO CONTATOS ======== */
+
+#contato {
+  background-color: var(--color-tertiary);
+  color: var(--color-text-dark);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: var(--spacing-2xl) 0;
+}
+
+#contato h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+#contato .contato-conteudo {
+  color: var(--color-text-dark);
+  font-weight: var(--font-weight-bold);
+  max-width: var(--max-width-lg);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  gap: var(--gap-sm);
+}
+
+#contato .contato-container {
+  max-width: var(--max-width-lg);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+
+/* ========= UTILIDADES ======== */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ======== RESPONSIVIDADE ======== */
 
 @media (max-width: 768px) {
   main {

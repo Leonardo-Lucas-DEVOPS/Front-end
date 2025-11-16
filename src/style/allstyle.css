@@ -11,10 +11,15 @@
   /* ===== CORES ===== */
   --color-primary: #0d323b;
   --color-secondary: #fdbe00;
+  --color-tertiary: #b5b8b9;
+  --color-quaternary: #b38b2a;
+  --color-quinary: #5a5237;
   --color-accent: #48979a;
+  --color-neutral: #fff;
   
   --color-text-primary: #ffffff;
   --color-text-secondary: #e0e0e0;
+  --color-text-tertiary: var(--color-primary);
   --color-text-dark: #1a1a1a;
   --color-text-muted: #cac3c3;
   
@@ -22,7 +27,7 @@
   --color-error: #f44336;
   --color-info: #2196f3;
   
-  --color-border: #fdbe00;
+  --color-border: var(--color-secondary);
   --color-border-light: rgba(255, 255, 255, 0.2);
   
   /* ===== ESPAÇAMENTOS ===== */
@@ -102,7 +107,10 @@
   --gap-sm: 1rem;
   --gap-md: 2rem;
   --gap-lg: 3rem;
+  --gap-xl: 4rem;
+  --gap-2xl: 5rem;
 }
+
 
 /* ===== BREAKPOINTS (para uso em @media) ===== */
 /* 

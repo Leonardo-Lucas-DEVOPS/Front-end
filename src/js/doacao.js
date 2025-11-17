@@ -31,32 +31,74 @@
 
   /* aplica máscaras (incluindo as de cartão/cpf) */
   function applyMasks() {
-    // Seleção interna (garante que exista)
+    // Máscara de Nome
+    const donorName = $('#donorName');
+    if (donorName && typeof window.mascaraNome === 'function') {
+      donorName.addEventListener('input', window.mascaraNome);
+      donorName.addEventListener('blur', window.capitalizarTexto);
+    }
+
+    // Máscara de E-mail
+    const donorEmail = $('#donorEmail');
+    if (donorEmail && typeof window.mascaraEmail === 'function') {
+      donorEmail.addEventListener('input', window.mascaraEmail);
+    }
+
+    // Máscara de Telefone
     const phone = $('#donorPhone');
     if (phone && typeof window.mascaraTelefone === 'function') {
       phone.addEventListener('input', window.mascaraTelefone);
     }
+
+    // Máscara de Nome no Cartão
+    const cardName = $('#cardName');
+    if (cardName && typeof window.mascaraNome === 'function') {
+      cardName.addEventListener('input', window.mascaraNome);
+      cardName.addEventListener('blur', window.capitalizarTexto);
+    }
+
+    // Máscara de Número do Cartão
     const cardN = $('#cardNumber');
     if (cardN) {
       cardN.addEventListener('input', e => {
-        const v = e.target.value.replace(/\D/g, '').slice(0, 19);
+        const v = e.target.value.replace(/\D/g, '').slice(0, 16);
         e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
       });
     }
+
+    // Máscara de Validade do Cartão
     const expiry = $('#cardExpiry');
     if (expiry) {
       expiry.addEventListener('input', e => {
-        let v = e.target.value.replace(/\D/g, '').slice(0,4);
+        let v = e.target.value.replace(/\D/g, '').slice(0, 4);
         if (v.length >= 3) v = v.replace(/(\d{2})(\d{1,2})/, '$1/$2');
         e.target.value = v;
       });
     }
+
+    // Máscara de CVV
+    const cvv = $('#cardCvv');
+    if (cvv) {
+      cvv.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+      });
+    }
+
+    // Máscara de CPF do Titular
     const cpf = $('#cardCpf');
-    if (cpf) {
-      cpf.addEventListener('input', e => {
-        let v = e.target.value.replace(/\D/g, '').slice(0,11);
-        v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, function(_,a,b,c,d){ return a ? a + (b ? '.'+b : '') + (c ? '.'+c : '') + (d ? '-' + d : '') : a; });
-        e.target.value = v;
+    if (cpf && typeof window.mascaraCPF === 'function') {
+      cpf.addEventListener('input', window.mascaraCPF);
+    }
+
+    // Máscara de Valor Customizado (moeda)
+    const amountCustom = $('#amountCustom');
+    if (amountCustom) {
+      amountCustom.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v) {
+          v = (parseInt(v) / 100).toFixed(2);
+          e.target.value = v;
+        }
       });
     }
   }

@@ -269,6 +269,38 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 /* ========================================== */
+/* MENSAGENS DE ERRO ARIA */
+/* ========================================== */
+
+.erro-campo {
+    display: none;
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+}
+
+.erro-campo:not(:empty) {
+    display: block;
+}
+
+/* Destaque visual para campos inválidos com ARIA */
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: var(--color-error) !important;
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+/* Destaque visual para campos válidos com ARIA */
+input[aria-invalid="false"]:not(:placeholder-shown):valid,
+select[aria-invalid="false"]:not(:placeholder-shown):valid,
+textarea[aria-invalid="false"]:not(:placeholder-shown):valid {
+    border-color: var(--color-success);
+}
+
+/* ========================================== */
 /* RESPONSIVO - MOBILE */
 /* ========================================== */
 

@@ -23,20 +23,27 @@
         <div class="bloco-header">
             <div class="header-container">
                 <img src="src/assets/images/logo.png" alt="Logo do Instituto Vida Animal" class="logo">
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <button class="menu-toggle" 
+                        id="menuToggle" 
+                        aria-label="Abrir menu de navegação"
+                        aria-expanded="false"
+                        aria-controls="navMenu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-                <nav class="nav-menu" id="navMenu">
+                <nav class="nav-menu" 
+                     id="navMenu" 
+                     aria-label="Menu principal de navegação">
                     <a data-tela="sobre.html">Menu</a>
                     <a data-tela="projeto.html">Projetos</a>
                     <a data-tela="contato.html">Contate-nos</a>
+                    <a data-tela="doacao.html" class="btn-doar-menu">Doar Agora</a>
                 </nav>
             </div>
 
             <div class="texto-banner">
-                <h1 id="tituto-header">Instituto Vida Animal</h1>
+                <h1 id="titulo-header">Instituto Vida Animal</h1>
                 <p id="texto-header">Dedicado ao Bem-Estar e Proteção dos Nossos Melhores Amigos</p>
                 <button id="botao-header">Contato</button>
             </div>

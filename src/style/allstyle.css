@@ -2,6 +2,7 @@
 @import url("sobrestyle.css");
 @import url("projeto.css");
 @import url("contato.css");
+@import url("doacao.css");
 
 /* ============================================ */
 /* SISTEMA DE DESIGN - VARIÁVEIS GLOBAIS */
@@ -322,6 +323,30 @@ footer {
   font-weight: var(--font-weight-semibold);
 }
 
+/* ===== Botão de Doação no Menu ===== */
+.btn-doar-menu {
+  background-color: var(--color-secondary) !important;
+  color: var(--color-primary) !important;
+  margin: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md) !important;
+  border-radius: var(--radius-full) !important;
+  text-align: center;
+  font-weight: var(--font-weight-bold) !important;
+  border-left: none !important;
+  box-shadow: 0 4px 12px rgba(253, 190, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-doar-menu:hover,
+.btn-doar-menu:focus {
+  background-color: var(--color-quaternary) !important;
+  color: var(--color-primary) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(253, 190, 0, 0.6) !important;
+  padding-left: var(--spacing-md) !important;
+}
+
 /* ===== Overlay quando menu aberto ===== */
 .menu-overlay {
   position: fixed;
@@ -380,6 +405,17 @@ footer {
     background-color: rgba(105, 181, 120, 0.4);
     border-radius: var(--radius-sm);
     font-weight: var(--font-weight-semibold);
+  }
+
+  /* Botão de Doação - Desktop */
+  .btn-doar-menu {
+    margin: 0 0 0 var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-lg) !important;
+  }
+
+  .btn-doar-menu:hover,
+  .btn-doar-menu:focus {
+    padding: var(--spacing-xs) var(--spacing-lg) !important;
   }
 
   .logo {

@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.toggle('active');
         overlay.classList.toggle('active');
         
+        // Gerenciar atributos ARIA para acessibilidade
+        const isExpanded = navMenu.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+        menuToggle.setAttribute('aria-label', 
+            isExpanded ? 'Fechar menu de navegação' : 'Abrir menu de navegação'
+        );
+        
         // Previne scroll quando menu aberto
         if (navMenu.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
@@ -33,6 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
         overlay.classList.remove('active');
+        
+        // Atualizar ARIA quando menu fecha
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+        
         document.body.style.overflow = '';
     });
 
@@ -109,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 overlay.classList.remove('active');
+                
+                // Atualizar ARIA
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+                
                 document.body.style.overflow = '';
             }
         });
@@ -132,6 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 overlay.classList.remove('active');
+                
+                // Atualizar ARIA
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+                
                 document.body.style.overflow = '';
             }
         });

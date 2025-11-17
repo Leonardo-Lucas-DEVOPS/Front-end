@@ -13,6 +13,46 @@ const GOOGLE_SHEETS_CONFIG = {
 };
 
 // ============================================
+// VALIDAR CPF
+// ============================================
+function validarCPF(cpf) {
+    // Remove caracteres não numéricos
+    cpf = cpf.replace(/\D/g, '');
+    
+    // Verifica se tem 11 dígitos
+    if (cpf.length !== 11) return false;
+    
+    // Verifica CPFs conhecidos como inválidos
+    if (/^(\d)\1{10}$/.test(cpf)) return false;
+    
+    // Validação do primeiro dígito verificador
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf.charAt(i)) * (10 - i);
+    }
+    let resto = 11 - (soma % 11);
+    let digitoVerificador1 = resto === 10 || resto === 11 ? 0 : resto;
+    
+    if (digitoVerificador1 !== parseInt(cpf.charAt(9))) {
+        return false;
+    }
+    
+    // Validação do segundo dígito verificador
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf.charAt(i)) * (11 - i);
+    }
+    resto = 11 - (soma % 11);
+    let digitoVerificador2 = resto === 10 || resto === 11 ? 0 : resto;
+    
+    if (digitoVerificador2 !== parseInt(cpf.charAt(10))) {
+        return false;
+    }
+    
+    return true;
+}
+
+// ============================================
 // BUSCAR CEP (ViaCEP API)
 // ============================================
 async function buscarCEP(cep) {
@@ -76,6 +116,16 @@ function validarFormulario(form) {
         erros.push('Telefone inválido (deve ter 10 ou 11 dígitos)');
     }
 
+    // Valida CPF
+    if (form.cpf) {
+        const cpf = form.cpf.value.replace(/\D/g, '');
+        if (cpf.length !== 11) {
+            erros.push('CPF deve ter 11 dígitos');
+        } else if (!validarCPF(cpf)) {
+            erros.push('CPF inválido');
+        }
+    }
+
     // Valida CEP
     const cep = form.cep.value.replace(/\D/g, '');
     if (cep.length !== 8) {
@@ -122,6 +172,44 @@ function mostrarFeedback(mensagem, tipo = 'sucesso') {
 }
 
 // ============================================
+// GERENCIAR ERROS COM ARIA
+// ============================================
+function mostrarErroAria(campoId, mensagem) {
+    const campo = document.getElementById(campoId);
+    const erroSpan = document.getElementById(`${campoId}-erro`);
+    
+    if (!campo) return;
+    
+    // Marca campo como inválido
+    campo.setAttribute('aria-invalid', 'true');
+    
+    // Mostra mensagem de erro
+    if (erroSpan) {
+        erroSpan.textContent = mensagem;
+    }
+}
+
+function limparErroAria(campoId) {
+    const campo = document.getElementById(campoId);
+    const erroSpan = document.getElementById(`${campoId}-erro`);
+    
+    if (!campo) return;
+    
+    // Marca campo como válido
+    campo.setAttribute('aria-invalid', 'false');
+    
+    // Remove mensagem de erro
+    if (erroSpan) {
+        erroSpan.textContent = '';
+    }
+}
+
+function limparTodosErrosAria() {
+    const camposComErro = ['nome', 'email', 'telefone', 'cpf', 'cep', 'assunto', 'mensagem', 'aceitaTermos'];
+    camposComErro.forEach(campo => limparErroAria(campo));
+}
+
+// ============================================
 // ENVIAR PARA GOOGLE SHEETS
 // ============================================
 async function enviarFormulario(event) {
@@ -131,10 +219,54 @@ async function enviarFormulario(event) {
     const submitBtn = form.querySelector('button[type="submit"]');
     const btnTextoOriginal = submitBtn.textContent;
 
+    // Limpar erros anteriores
+    limparTodosErrosAria();
+
     // Validar formulário
     const erros = validarFormulario(form);
     if (erros.length > 0) {
-        mostrarFeedback('❌ ' + erros.join(', '), 'erro');
+        // Mostrar erros específicos nos campos
+        if (form.nome.value.trim().length < 3) {
+            mostrarErroAria('nome', 'Nome deve ter pelo menos 3 caracteres');
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(form.email.value.trim())) {
+            mostrarErroAria('email', 'E-mail inválido');
+        }
+        
+        const telefone = form.telefone.value.replace(/\D/g, '');
+        if (telefone.length < 10 || telefone.length > 11) {
+            mostrarErroAria('telefone', 'Telefone inválido (10 ou 11 dígitos)');
+        }
+        
+        if (form.cpf) {
+            const cpf = form.cpf.value.replace(/\D/g, '');
+            if (cpf.length !== 11) {
+                mostrarErroAria('cpf', 'CPF deve ter 11 dígitos');
+            } else if (!validarCPF(cpf)) {
+                mostrarErroAria('cpf', 'CPF inválido');
+            }
+        }
+        
+        const cep = form.cep.value.replace(/\D/g, '');
+        if (cep.length !== 8) {
+            mostrarErroAria('cep', 'CEP deve ter 8 dígitos');
+        }
+        
+        if (!form.assunto.value) {
+            mostrarErroAria('assunto', 'Selecione um assunto');
+        }
+        
+        if (form.mensagem.value.trim().length < 10) {
+            mostrarErroAria('mensagem', 'Mensagem deve ter pelo menos 10 caracteres');
+        }
+        
+        if (!form.aceitaTermos.checked) {
+            mostrarErroAria('aceitaTermos', 'Você deve aceitar os termos de uso');
+        }
+        
+        mostrarFeedback('❌ Por favor, corrija os erros no formulário', 'erro');
         return;
     }
 
@@ -147,6 +279,7 @@ async function enviarFormulario(event) {
     formData.append('nome', form.nome.value.trim());
     formData.append('email', form.email.value.trim());
     formData.append('telefone', form.telefone.value);
+    formData.append('cpf', form.cpf?.value || 'Não informado');
     formData.append('dataNascimento', form.dataNascimento.value || 'Não informado');
     formData.append('cep', form.cep.value);
     formData.append('estado', form.estado.value || 'Não informado');
@@ -173,6 +306,7 @@ async function enviarFormulario(event) {
         if (result.result === 'success') {
             mostrarFeedback('✅ Mensagem enviada com sucesso! Entraremos em contato em breve.', 'sucesso');
             form.reset();
+            limparTodosErrosAria();
             atualizarContador();
         } else {
             throw new Error(result.message || 'Erro desconhecido');
@@ -239,22 +373,61 @@ function inicializarFormulario() {
     if (nomeInput) {
         nomeInput.addEventListener('input', mascaraNome);
         nomeInput.addEventListener('blur', capitalizarTexto);
+        // Validação ARIA em tempo real
+        nomeInput.addEventListener('input', (e) => {
+            if (e.target.value.trim().length >= 3) {
+                limparErroAria('nome');
+            }
+        });
     }
 
     const emailInput = form.querySelector('#email');
     if (emailInput) {
         emailInput.addEventListener('input', mascaraEmail);
+        // Validação ARIA em tempo real
+        emailInput.addEventListener('blur', (e) => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(e.target.value.trim())) {
+                limparErroAria('email');
+            }
+        });
     }
 
     const telefoneInput = form.querySelector('#telefone');
     if (telefoneInput) {
         telefoneInput.addEventListener('input', mascaraTelefone);
+        // Validação ARIA em tempo real
+        telefoneInput.addEventListener('input', (e) => {
+            const tel = e.target.value.replace(/\D/g, '');
+            if (tel.length >= 10 && tel.length <= 11) {
+                limparErroAria('telefone');
+            }
+        });
+    }
+
+    const cpfInput = form.querySelector('#cpf');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', mascaraCPF);
+        // Validação ARIA em tempo real
+        cpfInput.addEventListener('blur', (e) => {
+            const cpf = e.target.value.replace(/\D/g, '');
+            if (cpf.length === 11 && validarCPF(cpf)) {
+                limparErroAria('cpf');
+            }
+        });
     }
 
     const cepInput = form.querySelector('#cep');
     if (cepInput) {
         cepInput.addEventListener('input', mascaraCEP);
         cepInput.addEventListener('blur', (e) => buscarCEP(e.target.value));
+        // Validação ARIA em tempo real
+        cepInput.addEventListener('input', (e) => {
+            const cep = e.target.value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                limparErroAria('cep');
+            }
+        });
     }
 
     const numeroInput = form.querySelector('#numero');
@@ -281,6 +454,13 @@ function inicializarFormulario() {
     if (mensagemInput) {
         mensagemInput.addEventListener('input', atualizarContador);
         mensagemInput.maxLength = 500;
+        
+        // Validação ARIA em tempo real
+        mensagemInput.addEventListener('input', (e) => {
+            if (e.target.value.trim().length >= 10) {
+                limparErroAria('mensagem');
+            }
+        });
 
         // Cria contador visual se não existir
         if (!document.getElementById('contadorCaracteres')) {
@@ -293,6 +473,26 @@ function inicializarFormulario() {
             mensagemInput.parentNode.appendChild(contador);
             atualizarContador();
         }
+    }
+    
+    // Validação ARIA para Assunto
+    const assuntoSelect = form.querySelector('#assunto');
+    if (assuntoSelect) {
+        assuntoSelect.addEventListener('change', (e) => {
+            if (e.target.value) {
+                limparErroAria('assunto');
+            }
+        });
+    }
+    
+    // Validação ARIA para checkbox de termos
+    const termosCheckbox = form.querySelector('#aceitaTermos');
+    if (termosCheckbox) {
+        termosCheckbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                limparErroAria('aceitaTermos');
+            }
+        });
     }
 
 }

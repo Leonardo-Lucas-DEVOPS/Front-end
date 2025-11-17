@@ -48,6 +48,18 @@ const Mascaras = {
     },
     
     /**
+     * Máscara de CPF - formato XXX.XXX.XXX-XX
+     * @param {Event} event - Evento de input
+     */
+    cpf: function(event) {
+        let valor = event.target.value.replace(/\D/g, '');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})/, '$1-$2');
+        event.target.value = valor.substring(0, 14);
+    },
+    
+    /**
      * Máscara de Número - permite apenas dígitos
      * @param {Event} event - Evento de input
      */
@@ -94,6 +106,10 @@ function mascaraTelefone(event) {
 
 function mascaraCEP(event) {
     Mascaras.cep(event);
+}
+
+function mascaraCPF(event) {
+    Mascaras.cpf(event);
 }
 
 function mascaraNumero(event) {

@@ -1,40 +1,119 @@
-<section class="projeto">
+<section class="projeto" aria-labelledby="projeto-heading" role="region">
+
     <h2>Nossos projetos</h2>
-    
-    <!-- Projeto 1 -->
-    <article class="projeto-content">
-        <div class="projeto-text">
-            <h4>Mutirão de Castração</h4>
-            <p>O <strong>Mutirão de Castração</strong> é nossa iniciativa para controlar a população de animais de rua de forma humana e responsável. Oferecemos cirurgias gratuitas realizadas por veterinários qualificados, evitando o abandono e o sofrimento de milhares de filhotes que nasceriam nas ruas.</p>
-            <p>Castrar é um ato de amor e responsabilidade. Além de prevenir doenças graves e aumentar a expectativa de vida dos animais, a castração combate a superpopulação e reduz o número de animais abandonados. Participe dessa corrente do bem e ajude a construir um futuro melhor para todos os seres que compartilham nosso mundo.</p>
-        </div>
-        <div class="projeto-image">
-            <img src="src/assets/images/gato-bonito.jpg" alt="Gato bonito - Projeto Vida Animal">
-        </div>
-    </article>
 
-    <!-- Projeto 2 -->
-    <article class="projeto-content">
-        <div class="projeto-text">
-            <h4>Programa de Adoção</h4>
-            <p>Nosso <strong>Programa de Adoção</strong> tem como missão oferecer uma nova chance a cães e gatos que foram resgatados do abandono. Todos passam por avaliação veterinária, são vacinados, castrados e preparados para receber amor em um novo lar. Acreditamos que cada adoção responsável é um passo importante na construção de uma sociedade mais consciente e compassiva.</p>
-            <p>Adotar é mais do que abrir a porta de casa — é abrir o coração. Cada animal adotado representa uma história reescrita, um laço criado e uma vida transformada. Ao adotar, você se torna parte de uma corrente de cuidado e esperança que acredita que todo ser merece uma segunda oportunidade.</p>
-        </div>
-        <div class="projeto-image">
-            <img src="src/assets/images/projeto-adoca.jpg" alt="Projeto de Adoção - Projeto Vida Animal">
-        </div>
-    </article>
+    <div class="grid-projetos">
+        <!-- Projeto 1 -->
+        <article class="projeto-content" role="article" aria-labelledby="projeto1-title">
+            <figure class="projeto-image" tabindex="0" aria-labelledby="projeto1-title">
+                <img src="src/assets/images/castracao.webp" alt="Gato sentado em ambiente de adoção" loading="lazy">
+                <figcaption class="sr-only">Imagem: Gato deitado em mutirão de castração</figcaption>
+            </figure>
+            <div class="projeto-texto">
+                <h4 id="projeto1-title">Mutirão de Castração</h4>
+                <p>O <strong>Mutirão de Castração</strong> é nossa iniciativa para controlar a população de animais de
+                    rua de forma humana e responsável. Oferecemos cirurgias gratuitas realizadas por veterinários
+                    qualificados, evitando o abandono e o sofrimento de milhares de filhotes que nasceriam nas ruas.</p>
+            </div>
 
-    <!-- Projeto 3 -->
-    <article class="projeto-content">
-        <div class="projeto-text">
-            <h4>Centro de Reabilitação</h4>
-            <p>Nosso <strong>Centro de Reabilitação</strong> acolhe animais que sofreram maus-tratos, acidentes ou abandono. Oferecemos tratamento veterinário completo, fisioterapia, acompanhamento nutricional e muito carinho para que cada animal recupere sua saúde física e emocional antes de encontrar um lar definitivo.</p>
-            <p>Aqui, cada vida importa. Trabalhamos incansavelmente para devolver dignidade aos que chegam fragilizados, transformando dor em esperança. Com dedicação profissional e amor genuíno, reabilitamos corpos e corações, preparando esses guerreiros para uma nova chance de serem felizes ao lado de famílias que os amarão para sempre.</p>
-        </div>
-        <div class="projeto-image">
-            <img src="src/assets/images/projeto-reabilitacao.jpg" alt="Centro de Reabilitação - Projeto Vida Animal">
-        </div>
-    </article>
-    
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="projeto-content" role="article" aria-labelledby="projeto2-title">
+            <figure class="projeto-image" tabindex="0" aria-labelledby="projeto2-title">
+                <img src="src/assets/images/adocao-cachorro.webp" alt="Pessoa adotando um cão em evento de adoção"
+                    loading="lazy">
+                <figcaption class="sr-only">Imagem: Familia adotando um cão em evento de adoção (Programa de Adoção)
+                </figcaption>
+            </figure>
+            <div class="projeto-texto">
+                <h4 id="projeto2-title">Programa de Adoção</h4>
+                <p>Nosso <strong>Programa de Adoção</strong> tem como missão oferecer uma nova chance a cães e gatos que
+                    foram resgatados do abandono. Todos passam por avaliação veterinária, são vacinados, castrados e
+                    preparados para receber amor em um novo lar.</p>
+            </div>
+
+        </article>
+
+        <!-- Projeto 3 -->
+        <article class="projeto-content" role="article" aria-labelledby="projeto3-title">
+            <figure class="projeto-image" tabindex="0" aria-labelledby="projeto3-title">
+                <img src="src/assets/images/projeto-reabilitacao.jpg" alt="Equipe cuidando de animal em reabilitação"
+                    loading="lazy">
+                <figcaption class="sr-only">Imagem: Equipe cuidando de animal em reabilitação (Centro de
+                    Reabilitação)</figcaption>
+            </figure>
+            <div class="projeto-texto">
+                <h4 id="projeto3-title">Reabilitação de Animais</h4>
+                <p>Nosso <strong>Centro de Reabilitação</strong> acolhe animais que sofreram maus-tratos, acidentes ou
+                    abandono. Oferecemos tratamento veterinário completo, fisioterapia, acompanhamento nutricional e
+                    muito carinho para que cada animal recupere sua saúde física e emocional antes de encontrar um lar
+                    definitivo.</p>
+            </div>
+        </article>
+        <!-- Projeto 4 -->
+        <article class="projeto-content" role="article" aria-labelledby="projeto4-title">
+            <figure class="projeto-image" tabindex="0" aria-labelledby="projeto4-title">
+                <img src="src/assets/images/cao-de-rua.jpg" alt="Cão resgatado descansando após ser acolhido"
+                    loading="lazy">
+                <figcaption class="sr-only">Imagem: Cão resgatado descansando após ser acolhido (Centro de Resgate)
+                </figcaption>
+            </figure>
+
+            <div class="projeto-texto">
+                <h4 id="projeto4-title">Centro de Resgate</h4>
+                <p>Nosso <strong>Centro de Resgate</strong> atua no salvamento de animais que vivem em situação de rua,
+                    expostos
+                    ao frio, fome, doenças e diversos perigos. Nossa equipe realiza operações de busca e resgate com
+                    cuidado e dedicação, garantindo acolhimento imediato, avaliação veterinária, alimentação adequada e
+                    um ambiente seguro. Cada animal recebe atenção especial para recuperar sua saúde e confiança antes
+                    de iniciar uma nova chance de vida em um lar amoroso.</p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="doacoes" aria-labelledby="doacoes-heading" role="region">
+    <div class="doacoes-header">
+        <h2 id="doacoes-heading">Faça sua Doação</h2>
+        <p class="doacoes-descricao">Não importa o quanto você doe. Qualquer contribuição irá mudar a vida de um animal.</p>
+    </div>
+
+    <div class="doacoes-content">
+        <article class="card-doacao">
+            <div class="card-doacao-header">
+                <span class="valor-destaque">R$ 5</span>
+                <span class="valor-periodo">/mês</span>
+            </div>
+            <p class="card-doacao-texto">Você contribui para um futuro melhor para os animais resgatados dos maus-tratos</p>
+            <button class="btn-doacao" data-amount="5" data-tela="doacao.html" aria-label="Doar R$ 5 por mês">Doar Agora</button>
+        </article>
+
+        <article class="card-doacao">
+            <div class="card-doacao-header">
+                <span class="valor-destaque">R$ 10</span>
+                <span class="valor-periodo">/mês</span>
+            </div>
+            <p class="card-doacao-texto">Sua doação ajuda a fornecer cuidados veterinários essenciais e abrigo para animais em necessidade</p>
+            <button class="btn-doacao" data-amount="10" data-tela="doacao.html" aria-label="Doar R$ 10 por mês">Doar Agora</button>
+        </article>
+
+        <article class="card-doacao">
+            <div class="card-doacao-header">
+                <span class="valor-destaque">R$ 30</span>
+                <span class="valor-periodo">/mês</span>
+            </div>
+            <p class="card-doacao-texto">Com sua contribuição, podemos continuar nosso trabalho de resgate, reabilitação e adoção de animais</p>
+            <button class="btn-doacao" data-amount="30" data-tela="doacao.html" aria-label="Doar R$ 30 por mês">Doar Agora</button>
+        </article>
+
+        <article class="card-doacao">
+            <div class="card-doacao-header">
+                <span class="valor-destaque">R$ 45</span>
+                <span class="valor-periodo">/mês</span>
+            </div>
+            <p class="card-doacao-texto">Você contribui com os cuidados básicos hospitalares e alimentação de vários animais resgatados</p>
+            <button class="btn-doacao" data-amount="45" data-tela="doacao.html" aria-label="Doar R$ 45 por mês">Doar Agora</button>
+        </article>
+    </div>
 </section>

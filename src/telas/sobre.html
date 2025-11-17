@@ -1,27 +1,83 @@
 <main>
-    <section id="sobre">
-        <div class="imagem-sobre">
-            <img src="src/assets/images/animais_diversos.png" alt="Vários animais">
-        </div>
+    <section id="sobre" aria-labelledby="sobre-title">
+        <figure class="imagem-sobre" role="img" aria-label="Vários animais resgatados pelo Instituto Vida Animal">
+            <img src="src/assets/images/animais_diversos.png" alt="Vários animais resgatados pelo Instituto Vida Animal">
+        </figure>
             
         <div class="texto-sobre">
-            <h2>Nós somos o Instituto Vida Animal</h2>
+            <h2 id="sobre-title">Nós o Instituto Vida Animal</h2>
             <p>Nascemos da profunda convicção de que todo animal merece uma vida digna, livre de sofrimento e repleta de carinho. Somos uma ONG dedicada ao resgate, cuidado e reabilitação daqueles que foram abandonados, negligenciados ou que se encontram em situação de risco.</p>
             <p>
             Nossa missão vai além de simplesmente tirar um animal da rua. Cada vida resgatada é recebida em um ambiente de acolhimento onde recebe tratamento veterinário completo, nutrição de qualidade e, o mais importante, a atenção e o amor necessários para curar feridas físicas e emocionais.</p>
         </div>        
     </section>
-    <section id="acreditamos">
+
+    <section id="acreditamos" aria-labelledby="acreditamos-title">
         <div class="container">
             <div class="texto-acreditamos">
-                <h2>No que Acreditamos</h2>
+                <h2 id="acreditamos-title">No que Acreditamos</h2>
                 <p>No Instituto Vida Animal, acreditamos que todo ser vivo tem direito ao respeito, ao cuidado e à vida digna.Nosso trabalho é guiado por valores inegociáveis: a compaixão, a responsabilidade e o compromisso com o bem-estar animal. </p>
                 <p>Lutamos diariamente para construir uma sociedade mais consciente, onde cada gesto de amor e empatia transforme o destino de cães, gatos, cavalos e tantas outras vidas que resgatamos. Aqui, cada animal é visto como único, não um número, mas uma história que merece um novo começo.</p>
             </div>
-            <div class="imagem-acreditamos">
+            <figure class="imagem-acreditamos">
                 <img src="src/assets/images/cachorro_filhote.png" alt="Cachorro filhote deitado na grama">
-            </div>
+            </figure>
         </div>
-
     </section>
+
+    <section id="atividades" aria-labelledby="atividades-title">
+    <div class="container">
+      <h2 id="atividades-title">O que fazemos</h2>
+
+      <div class="proporcionamos" role="list">
+        <article class="resgate" role="listitem" aria-labelledby="resgate-title">
+          <figure>
+            <img src="src/assets/images/resgate.png" alt="Equipe resgatando um animal" loading="lazy" width="300" height="150">
+            <figcaption class="visually-hidden">Resgate</figcaption>
+          </figure>
+          <h3 id="resgate-title">Resgate</h3>
+          <p>Realizamos resgates de animais em situação de risco, garantindo sua segurança e bem‑estar.</p>
+        </article>
+
+        <article class="tratamento" role="listitem" aria-labelledby="tratamento-title">
+          <figure>
+            <img src="src/assets/images/tratamento.png" alt="Cuidados veterinários" loading="lazy" width="300" height="150">
+            <figcaption class="visually-hidden">Tratamento</figcaption>
+          </figure>
+          <h3 id="tratamento-title">Tratamento</h3>
+          <p>Oferecemos cuidados veterinários completos, incluindo vacinação, castração e tratamentos necessários.</p>
+        </article>
+
+        <article class="reabilitacao" role="listitem" aria-labelledby="reabilitacao-title">
+          <figure>
+            <img src="src/assets/images/reabilitacao.png" alt="Reabilitação de animal" loading="lazy" width="300" height="150">
+            <figcaption class="visually-hidden">Reabilitação</figcaption>
+          </figure>
+          <h3 id="reabilitacao-title">Reabilitação</h3>
+          <p>Proporcionamos um ambiente seguro e amoroso para a recuperação física e emocional dos animais resgatados.</p>
+        </article>
+
+        <article class="adocao" role="listitem" aria-labelledby="adocao-title">
+          <figure>
+            <img src="src/assets/images/adocao.png" alt="Adoção responsável" loading="lazy" width="300" height="150">
+            <figcaption class="visually-hidden">Adoção</figcaption>
+          </figure>
+          <h3 id="adocao-title">Adoção</h3>
+          <p>Promovemos a adoção responsável, conectando nossos animais com lares amorosos e comprometidos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" aria-labelledby="contato-title">
+    <div class="contato-container">
+      <h2 id="contato-title">Entre em Contato</h2>
+      <address class="contato-conteudo">
+        <p><strong>E-mail:</strong> <a href="mailto:contato@institutoanimal.org.br">contato@institutoanimal.org.br</a></p>
+        <p><strong>Telefone:</strong> <a href="tel:+55119997385214">(11) 99738-5214</a></p>
+        <p><strong>Endereço:</strong> R. Santina 542, Novo Recreio São Jorge - Guarulhos - SP.</p>
+      </address>
+    </div>
+  </section>
+
 </main>

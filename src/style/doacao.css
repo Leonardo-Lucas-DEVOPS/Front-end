@@ -264,13 +264,15 @@
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-md);
   font-size: var(--font-size-md);
+  text-align: center;
 }
 
 .pix-info {
-  display: grid;
-  grid-template-columns: 200px 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--gap-lg);
-  align-items: start;
+  text-align: center;
 }
 
 .pix-qrcode {
@@ -279,12 +281,16 @@
   border-radius: var(--radius-md);
   border: 2px solid var(--color-border);
   object-fit: cover;
+  margin: 0 auto;
 }
 
 .pix-key-box {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
 }
 
 .pix-key-box strong {
@@ -302,6 +308,8 @@
   font-size: var(--font-size-sm);
   word-break: break-all;
   margin: 0;
+  text-align: center;
+  width: 100%;
 }
 
 .btn-copiar {
@@ -314,7 +322,7 @@
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: all var(--transition-base);
-  align-self: flex-start;
+  align-self: center;
 }
 
 .btn-copiar:hover {
@@ -431,7 +439,8 @@
   }
 
   .pix-info {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: var(--gap-md);
     text-align: center;
   }
@@ -511,7 +520,8 @@
   }
 
   .pix-info {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: var(--gap-md);
   }
 

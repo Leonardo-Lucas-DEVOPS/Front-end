@@ -1,4 +1,10 @@
 /* ------------------ Página de Projeto ------------------ */
+* {
+  box-sizing: border-box;
+}
+
+/* ============ PROJETO ============ */
+
 .projeto {
   padding: var(--spacing-lg) 0;
 }
@@ -7,31 +13,46 @@
   text-align: center;
   color: var(--color-text-primary);
   font-size: var(--font-size-2xl);
-  margin-bottom: calc(var(--spacing-2xl) * 1.5);
+  margin-bottom: calc(var(--spacing-xl) * 1.5);
+}
+
+.grid-projetos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-lg);
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 .projeto-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: var(--gap-md);
-  align-items: center;
-  margin-top: var(--spacing-lg);
+  align-items: stretch;
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   border: 2px solid var(--color-border);
+  background: transparent;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.projeto-text {
-  padding-right: var(--spacing-sm);
+.projeto-content:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.projeto-text h4 {
+.projeto-texto { 
+  padding: 0;
+}
+
+.projeto-texto h4 {
   color: var(--color-text-primary);
   font-size: var(--font-size-xl);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
-.projeto-text p {
+.projeto-texto p {
   line-height: var(--line-height-normal);
   color: var(--color-text-muted);
   margin-bottom: var(--spacing-sm);
@@ -40,40 +61,284 @@
 
 .projeto-image {
   width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
 }
 
 .projeto-image img {
   width: 100%;
   height: auto;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 80%, 18% 80%, 0% 38%);
   object-fit: cover;
+  display: block;
   transition: transform var(--transition-base);
+  max-height: 320px;
 }
 
 .projeto-image img:hover {
   transform: scale(1.02);
 }
 
+/* ============ DOAÇÕES ============ */
+
+.doacoes {
+  background-color: var(--color-secondary);
+  width: 100vw;
+  position: relative;
+  left: 50%;               
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+  box-sizing: border-box;
+}
+
+/* Header da seção */
+.doacoes-header {
+  text-align: left;
+  max-width: var(--max-width-lg);
+  margin: 0 auto var(--spacing-2xl);
+  padding: 0 var(--spacing-md);
+}
+
+.doacoes-header h2 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-neutral);
+  margin-bottom: var(--spacing-md);
+  font-weight: var(--font-weight-bold);
+}
+
+.doacoes-descricao {
+  font-size: var(--font-size-lg);
+  color: var(--color-neutral);
+  line-height: var(--line-height-relaxed);
+  margin-top: var(--spacing-sm);
+  max-width: 700px;
+}
+
+/* Grid de cards */
+.doacoes-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-md);
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Card de doação */
+.card-doacao {
+  background-color: var(--color-neutral);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-height: 240px;
+}
+
+.card-doacao:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-primary);
+}
+
+/* Header do card com valor */
+.card-doacao-header {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--spacing-xs);
+}
+
+.valor-destaque {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1.2;
+  display: inline;
+}
+
+.valor-periodo {
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  display: inline;
+}
+
+/* Texto do card */
+.card-doacao-texto {
+  flex: 1;
+  text-align: left;
+  color: var(--color-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Botão de doação */
+.btn-doacao {
+  background-color: var(--color-primary);
+  color: var(--color-neutral);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  width: 100%;
+  align-self: stretch;
+}
+
+.btn-doacao:hover {
+  background-color: var(--color-quaternary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 50, 59, 0.2);
+}
+
+/* ============ UTILIDADES ============ */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+
+/* Responsivo - Tablet e abaixo */
+@media (max-width: 1024px) {
+  .doacoes-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-md);
+  }
+
+  .card-doacao {
+    min-height: 260px;
+  }
+}
+
 /* Responsivo - Mobile */
 @media (max-width: 768px) {
-  .projeto-content {
+  .grid-projetos {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-    max-width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    gap: var(--gap-md);
+    padding: 0 var(--container-padding-mobile);
+  }
+
+  .projeto-content {
     padding: var(--spacing-md);
   }
 
-  .projeto h1 {
+  .projeto h2 {
     font-size: var(--font-size-xl);
   }
 
-  .projeto-text {
-    padding-right: 0;
+  .projeto-texto {
+    padding: 0;
   }
 
-  .projeto-text p {
+  .projeto-texto p {
     text-align: left;
+  }
+
+  .doacoes {
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-top: var(--spacing-xl);
+  }
+
+  .doacoes-header {
+    padding: 0 var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .doacoes-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .doacoes-descricao {
+    font-size: var(--font-size-base);
+    max-width: 100%;
+  }
+
+  .doacoes-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-md);
+    padding: 0 var(--spacing-xs);
+  }
+
+  .card-doacao {
+    padding: var(--spacing-md) var(--spacing-sm);
+    min-height: 240px;
+  }
+
+  .card-doacao-texto {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+  }
+
+  .valor-destaque,
+  .valor-periodo {
+    font-size: var(--font-size-xl);
+  }
+
+  .btn-doacao {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Responsivo - Mobile pequeno */
+@media (max-width: 540px) {
+  .doacoes {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .doacoes-header {
+    padding: 0;
+  }
+
+  .doacoes-header h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .doacoes-descricao {
+    font-size: var(--font-size-sm);
+  }
+
+  .doacoes-content {
+    grid-template-columns: 1fr;
+    gap: var(--gap-md);
+    padding: 0;
+  }
+
+  .card-doacao {
+    padding: var(--spacing-lg);
+    min-height: auto;
+  }
+
+  .card-doacao-texto {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .valor-destaque,
+  .valor-periodo {
+    font-size: var(--font-size-2xl);
+  }
+
+  .btn-doacao {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
   }
 }

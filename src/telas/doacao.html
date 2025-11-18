@@ -1,0 +1,120 @@
+<section class="doacao" aria-labelledby="doacao-title" role="region">
+  <div class="doacao-header">
+    <h2 id="doacao-title">Faça uma Doação</h2>
+    <p>Sua contribuição ajuda a transformar a vida de animais resgatados, garantindo alimentação, saúde, abrigo e muito
+      amor.</p>
+  </div>
+
+  <div class="doacao-container">
+    <form id="doacaoForm" class="doacao-form" novalidate>
+
+      <div class="doacao-valores">
+        <h3>Escolha um valor</h3>
+        <div class="valores-grid" role="radiogroup" aria-labelledby="valor-title">
+          <label class="valor-card">
+            <input type="radio" name="amount" value="5">
+            <span>R$ 5,00</span>
+          </label>
+
+          <label class="valor-card">
+            <input type="radio" name="amount" value="10">
+            <span>R$ 10,00</span>
+          </label>
+
+          <label class="valor-card">
+            <input type="radio" name="amount" value="30">
+            <span>R$ 30,00</span>
+          </label>
+
+          <label class="valor-card">
+            <input type="radio" name="amount" value="45">
+            <span>R$ 45,00</span>
+          </label>
+
+          <label class="valor-card valor-custom">
+            <input type="radio" name="amount" value="custom" id="customRadio">
+            <span>Outro valor:</span>
+            <input type="number" id="amountCustom" placeholder="R$ 0,00" min="1">
+          </label>
+        </div>
+      </div>
+      <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+
+      <div class="form-group">
+        <label for="donorName">Seu nome</label>
+        <input type="text" id="donorName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="donorEmail">E-mail</label>
+        <input type="email" id="donorEmail" required>
+      </div>
+
+      <div class="form-group">
+        <label for="donorPhone">Telefone</label>
+        <input type="tel" id="donorPhone" required>
+      </div>
+
+      <h3>Método de Pagamento</h3>
+
+      <div class="payment-grid" role="radiogroup" aria-labelledby="metodo-pagamento-title">
+        <label class="payment-card">
+          <input type="radio" name="paymentMethod" value="pix" checked>
+          <span>PIX</span>
+        </label>
+
+        <label class="payment-card">
+          <input type="radio" name="paymentMethod" value="card">
+          <span>Cartão de Crédito</span>
+        </label>
+      </div>
+
+      <div id="pixBlock" class="payment-details" aria-hidden="false">
+        <p>Escaneie o QR Code ou copie a chave PIX:</p>
+
+        <div id="pixContainer" class="pix-info">
+          <img id="pixQr" src="src/assets/images/frame.png" alt="QR Code PIX" class="pix-qrcode">
+          <div class="pix-key-box">
+            <strong>Chave PIX (E-mail):</strong>
+            <p id="pixKeyText"></p>
+            <button type="button" id="copyPixKey" class="btn-copiar">Copiar chave</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="cardBlock" class="payment-details hidden" style="display: none;" aria-hidden="true">
+        <div class="form-group">
+          <label for="cardName">Nome no cartão</label>
+          <input type="text" id="cardName">
+        </div>
+
+        <div class="form-group">
+          <label for="cardNumber">Número do cartão</label>
+          <input type="text" id="cardNumber" inputmode="numeric" maxlength="23">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cardExpiry">Validade (MM/AA)</label>
+            <input type="text" id="cardExpiry" maxlength="5" placeholder="MM/AA">
+          </div>
+
+          <div class="form-group">
+            <label for="cardCvv">CVV</label>
+            <input type="password" id="cardCvv" maxlength="4" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cardCpf">CPF do titular</label>
+          <input type="text" id="cardCpf" maxlength="14">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-doar" id="btnDoar">Doar Agora</button>
+      </div>
+
+    </form>
+  </div>
+</section>

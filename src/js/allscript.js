@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.toggle('active');
         overlay.classList.toggle('active');
         
+        // Gerenciar atributos ARIA para acessibilidade
+        const isExpanded = navMenu.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+        menuToggle.setAttribute('aria-label', 
+            isExpanded ? 'Fechar menu de navegação' : 'Abrir menu de navegação'
+        );
+        
         // Previne scroll quando menu aberto
         if (navMenu.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
@@ -33,62 +40,108 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('active');
         overlay.classList.remove('active');
+        
+        // Atualizar ARIA quando menu fecha
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+        
         document.body.style.overflow = '';
     });
 
+   // Função para carregar o conteúdo de um arquivo HTML
+    function carregarScriptDinamico(src) {
+        return new Promise((resolve, reject) => {
+            const existingScript = document.querySelector(`script[src="${src}"]`);
+            if (existingScript) {
+                existingScript.remove(); // Remove a versão antiga
+            }
+
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+        });
+    }
+
+     // Carrega os scripts específicos da tela de Doação
+    async function inicializarScriptsDoacao() {
+        try {
+            // 2. Carrega o script de doacao.js
+            await carregarScriptDinamico('src/js/doacao.js');
+        } catch (error) {
+            console.error('Erro ao carregar scripts da doação:', error);
+        }
+    }
+
     // Função para carregar o conteúdo de um arquivo HTML
     async function carregarTela(caminho) {
+        if (!app) return;
+
+        // Limpa a URL atual (para evitar histórico sujo com a rota anterior)
+        window.history.pushState({}, '', `#${caminho.replace('.html', '')}`);
+        
         try {
-                const response = await fetch(`src/telas/${caminho}`);
+            const response = await fetch(`src/telas/${caminho}`);
             if (!response.ok) {
-                throw new Error(`Erro ao carregar a tela: ${response.statusText}`);
+                throw new Error(`Erro ao carregar ${caminho}: ${response.statusText}`);
             }
             const html = await response.text();
+
             app.innerHTML = html;
+
+            // AÇÃO CRÍTICA: Se for a tela de doação, carregue os scripts dinamicamente
+            if (caminho === 'doacao.html') {
+                inicializarScriptsDoacao(); 
+            }
             
-            // Fechar menu após navegação (mobile)
+        } catch (error) {
+            console.error('Falha ao carregar tela:', error);
+            app.innerHTML = `<section class="erro-404"><h2>Erro ao carregar a página</h2><p>Não foi possível carregar o conteúdo de ${caminho}.</p></section>`;
+        }
+    }
+    
+
+    // Navegação e Eventos
+
+    // Manipulador de navegação
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tela = link.getAttribute('data-tela');
+
+            // Gerenciar classe 'active'
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            carregarTela(tela);
+            
+            // Fechar menu se estiver aberto (mobile)
             if (navMenu.classList.contains('active')) {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 overlay.classList.remove('active');
+                
+                // Atualizar ARIA
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+                
                 document.body.style.overflow = '';
             }
-            
-            // Scroll suave para o topo
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } catch (error) {
-            console.error('Falha ao carregar o conteúdo:', error);
-            app.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
-        }
-    }
-
-    // Função para lidar com a navegação
-    function navegar(event) {
-        event.preventDefault();
-        const link = event.target.closest('a'); // Garante que pega o link, mesmo se clicar no texto
-        
-        if (!link) return;
-        
-        const tela = link.dataset.tela;
-        
-        if (tela) {
-            carregarTela(tela);
-            
-            // Adicionar classe active ao link atual
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        }
-    }
-
-    // Adiciona o evento de clique a cada link de navegação
-    navLinks.forEach(link => {
-        link.addEventListener('click', navegar);
+        });
     });
 
-    // Botão de contato no banner
-    const botaoContato = document.getElementById('botao-header');
-    if (botaoContato) {
-        botaoContato.addEventListener('click', () => {
+    // Botão Contato no Header
+    const botaoHeader = document.getElementById('botao-header');
+    if (botaoHeader) {
+        botaoHeader.addEventListener('click', () => {
+            // Gerenciar classe 'active' para o link de contato
+            const contatoLink = document.querySelector('a[data-tela="contato.html"]');
+            if (contatoLink) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                contatoLink.classList.add('active');
+            }
+
             carregarTela('contato.html');
             
             // Fechar menu se estiver aberto (mobile)
@@ -96,12 +149,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
                 overlay.classList.remove('active');
+                
+                // Atualizar ARIA
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+                
                 document.body.style.overflow = '';
             }
         });
     }
     
 
+    // Botões de Doação - Projeto
+
+    document.addEventListener('click', (e) => {
+      // Verifica se é um botão de doação (classe .btn-doacao)
+      const btn = e.target.closest('.btn-doacao');
+      if (!btn) return;
+      
+      e.preventDefault();
+      const amount = btn.getAttribute('data-amount');
+      
+      if (amount) {
+        // 1. Armazena valor a pré-selecionar na página de doação
+        sessionStorage.setItem('doacaoAmount', amount);
+        
+        // 2. Garante que o link de doação (se existir) fique ativo
+        const doacaoLink = document.querySelector('a[data-tela="doacao.html"]');
+        if (doacaoLink) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            doacaoLink.classList.add('active');
+        }
+
+        // 3. Carrega página de doação
+        carregarTela('doacao.html');
+      }
+    });
+
     // Carrega a primeira tela por padrão ao iniciar a aplicação
-    carregarTela('sobre.html');
+    // 1. Verifica se há hash na URL para navegação direta
+    const hash = window.location.hash.substring(1);
+    const initialPath = hash ? hash + '.html' : 'sobre.html';
+
+    // 2. Tenta encontrar o link correspondente no menu para aplicar a classe 'active'
+    const initialLink = document.querySelector(`a[data-tela="${initialPath}"]`);
+    if (initialLink) {
+        initialLink.classList.add('active');
+    }
+
+    // 3. Carrega a tela inicial
+    carregarTela(initialPath);
 });
+

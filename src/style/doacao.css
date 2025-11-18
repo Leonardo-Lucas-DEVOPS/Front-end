@@ -1,0 +1,577 @@
+/* ============================================ */
+/* PÁGINA DE DOAÇÃO */
+/* ============================================ */
+
+.doacao {
+  max-width: var(--max-width-xl);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.doacao-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.doacao-header h2 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.doacao-header p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ============================================ */
+/* FORMULÁRIO DE DOAÇÃO */
+/* ============================================ */
+
+.doacao-form {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+}
+
+/* ============================================ */
+/* VALORES DE DOAÇÃO */
+/* ============================================ */
+
+.doacao-valores {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.doacao-valores h3 {
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--gap-md);
+}
+
+.valor-card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.valor-card:hover {
+  border-color: var(--color-secondary);
+  background-color: rgba(253, 190, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.valor-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.valor-card input[type="radio"]:checked ~ span {
+  color: var(--color-secondary);
+}
+
+.valor-card input[type="radio"]:checked {
+  & + span {
+    color: var(--color-secondary);
+  }
+}
+
+.valor-card:has(input[type="radio"]:checked) {
+  border-color: var(--color-secondary);
+  background-color: rgba(253, 190, 0, 0.15);
+  box-shadow: var(--shadow-glow);
+}
+
+.valor-card > span {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+.valor-custom {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+}
+
+.valor-custom > span {
+  font-size: var(--font-size-lg);
+}
+
+#amountCustom {
+  flex: 1;
+  max-width: 200px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  text-align: right;
+}
+
+#amountCustom::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#amountCustom:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================ */
+/* CAMPOS DO FORMULÁRIO */
+/* ============================================ */
+
+.doacao-form h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary);
+  margin: var(--spacing-xl) 0 var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-base);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 0.75rem var(--spacing-sm);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-md);
+}
+
+/* ============================================ */
+/* MÉTODOS DE PAGAMENTO */
+/* ============================================ */
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-md);
+  margin: var(--spacing-md) 0;
+}
+
+.payment-card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.payment-card:hover {
+  border-color: var(--color-secondary);
+  background-color: rgba(253, 190, 0, 0.1);
+}
+
+.payment-card input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-secondary);
+  cursor: pointer;
+}
+
+.payment-card span {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.payment-card:has(input[type="radio"]:checked) {
+  border-color: var(--color-secondary);
+  background-color: rgba(253, 190, 0, 0.15);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================ */
+/* DETALHES DE PAGAMENTO */
+/* ============================================ */
+
+.payment-details {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  margin-top: var(--spacing-lg);
+}
+
+.payment-details p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-md);
+  text-align: center;
+}
+
+.pix-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+  text-align: center;
+}
+
+.pix-qrcode {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.pix-key-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.pix-key-box strong {
+  color: var(--color-secondary);
+  font-size: var(--font-size-md);
+  display: block;
+}
+
+.pix-key-box p {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+  word-break: break-all;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-copiar {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  align-self: center;
+}
+
+.btn-copiar:hover {
+  background-color: var(--color-quaternary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ============================================ */
+/* FEEDBACK */
+/* ============================================ */
+
+.form-feedback {
+  display: none;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  animation: slideDown var(--transition-base);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-feedback.sucesso {
+  background-color: rgba(76, 175, 80, 0.2);
+  border: 2px solid var(--color-success);
+  color: #81c784;
+}
+
+.form-feedback.erro {
+  background-color: rgba(244, 67, 54, 0.2);
+  border: 2px solid var(--color-error);
+  color: #ef5350;
+}
+
+/* ============================================ */
+/* BOTÕES DE AÇÃO */
+/* ============================================ */
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-md);
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 2px solid var(--color-border);
+}
+
+.btn-doar {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-doar:hover:not(:disabled) {
+  background-color: var(--color-quaternary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 190, 0, 0.4);
+}
+
+.btn-doar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================ */
+/* ESTADOS E UTILIDADES */
+/* ============================================ */
+
+.hidden {
+  display: none !important;
+}
+
+#cardBlock.hidden,
+#pixBlock.hidden {
+  display: none !important;
+}
+
+/* ============================================ */
+/* RESPONSIVIDADE */
+/* ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .doacao {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .valor-custom {
+    grid-column: 1 / -1;
+  }
+
+  .pix-info {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-md);
+    text-align: center;
+  }
+
+  .pix-qrcode {
+    margin: 0 auto;
+  }
+
+  .btn-copiar {
+    align-self: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .doacao {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .doacao-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .doacao-header h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .doacao-header p {
+    font-size: var(--font-size-sm);
+  }
+
+  .doacao-form {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .doacao-valores h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-sm);
+  }
+
+  .valor-card {
+    padding: var(--spacing-md) var(--spacing-sm);
+    min-height: 70px;
+  }
+
+  .valor-card > span {
+    font-size: var(--font-size-md);
+  }
+
+  .valor-custom {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+  }
+
+  .valor-custom > span {
+    font-size: var(--font-size-sm);
+  }
+
+  #amountCustom {
+    max-width: 100%;
+    font-size: var(--font-size-md);
+    padding: var(--spacing-xs);
+  }
+
+  .payment-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+  }
+
+  .payment-card {
+    padding: var(--spacing-sm);
+  }
+
+  .pix-info {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-md);
+  }
+
+  .pix-qrcode {
+    width: 160px;
+    height: 160px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-doar {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 540px) {
+  .doacao {
+    padding: var(--spacing-md) var(--spacing-xs);
+  }
+
+  .doacao-header h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .doacao-form {
+    padding: var(--spacing-md);
+  }
+
+  .valores-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+  }
+
+  .valor-card {
+    padding: var(--spacing-md);
+  }
+
+  .valor-custom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #amountCustom {
+    flex: 1;
+    max-width: 150px;
+  }
+}
